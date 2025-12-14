@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+@layer base {
+  :root {
+    --earth-ochre: #B04A2A;      /* Sunset over savanna */
+    --savanna-gold: #D4A574;     /* Golden hour light */
+    --twilight-indigo: #2C3E6A;  /* Deep blue twilight */
+    --acacia-green: #567D46;     /* Acacia tree green */
+    --sky-rose: #E8B4A0;         /* Dusty rose sky */
+    
+    /* Override shadcn/ui primary colors */
+    --primary: var(--acacia-green);
+    --primary-foreground: #ffffff;
+    --secondary: var(--savanna-gold);
+    --accent: var(--earth-ochre);
+  }
+  
+  /* Premium typography */
+  body {
+    @apply bg-neutral-900 text-white antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+}
+@layer base {
+  :root {
+    --primary: #567D46;
+    --secondary: #FFD700;
+    --dark: #1f2937;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeInText {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeInText 1.5s forwards;
+  animation-delay: 1s;
+}
