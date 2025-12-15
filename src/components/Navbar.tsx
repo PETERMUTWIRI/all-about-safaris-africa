@@ -132,9 +132,9 @@ export function Navbar() {
       <div className={`fixed left-0 right-0 z-40 transition-all duration-500 bg-neutral-900/95 backdrop-blur-xl`}>
         <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
-            {/* Mobile Logo + Site Name (Desktop) / Logo Only (Mobile) */}
-            <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-              <div className="w-10 h-10 rounded-full border-2 border-yellow-400/50 overflow-hidden group-hover:border-yellow-400 transition-all duration-300">
+            {/* Mobile Logo + Site Name */}
+            <Link href="/" className="flex items-center gap-1.5 group flex-shrink-0 min-w-0">
+              <div className="w-10 h-10 rounded-full border-2 border-yellow-400/50 overflow-hidden group-hover:border-yellow-400 transition-all duration-300 flex-shrink-0">
                 <Image
                   src="/images/safaris-logo.jpeg"
                   alt="All About Safaris Africa"
@@ -143,9 +143,8 @@ export function Navbar() {
                   className="object-cover"
                 />
               </div>
-              <div className="hidden lg:block">
-                <p className="text-white font-bold text-sm leading-tight">All About</p>
-                <p className="text-yellow-400 font-bold text-xs">Safaris Africa</p>
+              <div className="min-w-0">
+                <p className="text-white font-bold text-xs leading-tight truncate lg:text-sm">Safaris Africa</p>
               </div>
             </Link>
 
