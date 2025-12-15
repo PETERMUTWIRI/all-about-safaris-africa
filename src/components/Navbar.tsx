@@ -144,7 +144,7 @@ export function Navbar() {
                 />
               </div>
               <div className="min-w-0">
-                <p className="text-white font-bold text-xs leading-tight truncate lg:text-sm">Safaris Africa</p>
+                <p className="text-white font-bold text-xs leading-tight truncate lg:text-sm">AllAboutSafarisAfrica</p>
               </div>
             </Link>
 
