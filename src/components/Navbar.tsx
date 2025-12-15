@@ -129,23 +129,23 @@ export function Navbar() {
       </AnimatePresence>
 
       {/* BOTTOM ROW - Navigation */}
-      <div className={`fixed left-0 right-0 z-40 transition-all duration-500 bg-neutral-900/95 backdrop-blur-xl overflow-hidden`}>
-        <div className="w-full px-3 py-2">
-          <div className="flex justify-between items-center min-h-fit">
-            {/* Mobile Logo + Site Name (FAR LEFT) */}
-            <Link href="/" className="lg:hidden flex items-center gap-1 group flex-shrink-0 min-w-fit">
-              <div className="w-7 h-7 rounded-full border border-yellow-400/50 overflow-hidden group-hover:border-yellow-400 transition-all duration-300 flex-shrink-0">
+      <div className={`fixed left-0 right-0 z-40 transition-all duration-500 bg-neutral-900/95 backdrop-blur-xl`}>
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex justify-between items-center">
+            {/* Mobile Logo + Site Name (Desktop) / Logo Only (Mobile) */}
+            <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
+              <div className="w-10 h-10 rounded-full border-2 border-yellow-400/50 overflow-hidden group-hover:border-yellow-400 transition-all duration-300">
                 <Image
                   src="/images/safaris-logo.jpeg"
-                  alt="Safaris Africa"
-                  width={28}
-                  height={28}
+                  alt="All About Safaris Africa"
+                  width={40}
+                  height={40}
                   className="object-cover"
                 />
               </div>
-              <div className="hidden xs:block min-w-fit">
-                <p className="text-white font-bold text-[10px] leading-none">All About</p>
-                <p className="text-yellow-400 font-bold text-[10px] leading-none">Safaris</p>
+              <div className="hidden lg:block">
+                <p className="text-white font-bold text-sm leading-tight">All About</p>
+                <p className="text-yellow-400 font-bold text-xs">Safaris Africa</p>
               </div>
             </Link>
 
@@ -169,13 +169,13 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Right Actions (Icon + Menu for mobile, Full buttons for desktop) */}
-            <div className="flex items-center gap-1 sm:gap-3 ml-auto flex-shrink-0">
-              {/* WhatsApp Icon (visible on all sizes) */}
+            {/* Right Actions */}
+            <div className="flex items-center gap-4">
+              {/* WhatsApp Icon (Desktop only) */}
               <Link
                 href="https://wa.me/254700064857"
                 target="_blank"
-                className="text-yellow-400 hover:text-yellow-500 transition-colors p-1.5 flex-shrink-0"
+                className="hidden lg:block text-yellow-400 hover:text-yellow-500 transition-colors"
                 title="Chat on WhatsApp"
               >
                 <MessageCircle className="w-5 h-5" />
@@ -199,10 +199,10 @@ export function Navbar() {
                 <ChevronRight className="w-4 h-4 ml-1" />
               </Link>
 
-              {/* Mobile Menu Button (FAR RIGHT) */}
+              {/* Mobile Menu Button (Right side, only on mobile) */}
               <button
                 onClick={() => setIsOpen(true)}
-                className="lg:hidden text-white p-1.5 hover:text-yellow-400 transition-colors flex-shrink-0"
+                className="lg:hidden text-white p-2 hover:text-yellow-400 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
