@@ -141,6 +141,23 @@ export function Navbar() {
               <Menu className="w-6 h-6" />
             </button>
 
+            {/* Mobile Logo + Site Name */}
+            <Link href="/" className="lg:hidden flex items-center gap-2 group flex-shrink-0">
+              <div className="w-9 h-9 rounded-full border-2 border-yellow-400/50 overflow-hidden group-hover:border-yellow-400 transition-all duration-300">
+                <Image
+                  src="/images/safaris-logo.jpeg"
+                  alt="All About Safaris Africa"
+                  width={36}
+                  height={36}
+                  className="object-cover"
+                />
+              </div>
+              <div className="hidden sm:block">
+                <p className="text-white font-bold text-sm leading-tight">All About</p>
+                <p className="text-yellow-400 font-bold text-xs">Safaris Africa</p>
+              </div>
+            </Link>
+
             {/* Navigation Links */}
             <div className="flex items-center gap-6">
               {/* Desktop Links */}
