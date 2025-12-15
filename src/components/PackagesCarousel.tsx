@@ -341,8 +341,8 @@ export function PackagesCarousel() {
         </motion.div>
 
         {/* Carousel */}
-        <div className="relative max-w-6xl mx-auto mb-24">
-          <div className="overflow-hidden rounded-3xl">
+        <div className="relative max-w-6xl mx-auto mb-24 h-[600px]">
+          <div className="absolute inset-0 overflow-hidden rounded-3xl">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -368,23 +368,27 @@ export function PackagesCarousel() {
             <div className="invisible">
               <PackageCard {...packages[0]} index={0} />
             </div>
-          </div>
 
-          {/* Navigation */}
-          <button
-            onClick={() => slide(-1)}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-14 h-14 bg-neutral-800/80 border border-neutral-700 rounded-full flex items-center justify-center text-white hover:bg-yellow-400 hover:text-neutral-900 transition-all backdrop-blur-sm"
-            aria-label="Previous package"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={() => slide(1)}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-14 h-14 bg-neutral-800/80 border border-neutral-700 rounded-full flex items-center justify-center text-white hover:bg-yellow-400 hover:text-neutral-900 transition-all backdrop-blur-sm"
-            aria-label="Next package"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+            {/* Navigation buttons - positioned inside container */}
+            <button
+              onClick={() => slide(-1)}
+              onMouseEnter={() => setIsAutoPlay(false)}
+              onMouseLeave={() => setIsAutoPlay(true)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all z-10"
+              aria-label="Previous package"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => slide(1)}
+              onMouseEnter={() => setIsAutoPlay(false)}
+              onMouseLeave={() => setIsAutoPlay(true)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all z-10"
+              aria-label="Next package"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
 
           {/* Dots */}
           <div className="flex justify-center gap-3 mt-8">

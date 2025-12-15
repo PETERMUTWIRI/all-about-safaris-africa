@@ -132,68 +132,56 @@ export function Navbar() {
       <div className={`fixed left-0 right-0 z-40 transition-all duration-500 bg-neutral-900/95 backdrop-blur-xl`}>
         <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsOpen(true)}
-              className="lg:hidden text-white p-2 hover:text-yellow-400 transition-colors"
-              aria-label="Open menu"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-
-            {/* Mobile Logo + Site Name */}
-            <Link href="/" className="lg:hidden flex items-center gap-2 group flex-shrink-0">
-              <div className="w-9 h-9 rounded-full border-2 border-yellow-400/50 overflow-hidden group-hover:border-yellow-400 transition-all duration-300">
+            {/* Mobile Logo + Site Name (FAR LEFT) */}
+            <Link href="/" className="lg:hidden flex items-center gap-1.5 group flex-shrink-0">
+              <div className="w-8 h-8 rounded-full border-2 border-yellow-400/50 overflow-hidden group-hover:border-yellow-400 transition-all duration-300">
                 <Image
                   src="/images/safaris-logo.jpeg"
                   alt="All About Safaris Africa"
-                  width={36}
-                  height={36}
+                  width={32}
+                  height={32}
                   className="object-cover"
                 />
               </div>
-              <div className="hidden sm:block">
-                <p className="text-white font-bold text-sm leading-tight">All About</p>
-                <p className="text-yellow-400 font-bold text-xs">Safaris Africa</p>
+              <div className="hidden xs:block">
+                <p className="text-white font-bold text-xs leading-tight">All About</p>
+                <p className="text-yellow-400 font-bold text-xs">Safaris</p>
               </div>
             </Link>
 
-            {/* Navigation Links */}
-            <div className="flex items-center gap-6">
-              {/* Desktop Links */}
-              <div className="hidden lg:flex items-center gap-8">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`relative group text-white font-medium transition-colors hover:text-yellow-400 ${
-                      pathname === item.href ? "text-yellow-400" : ""
-                    }`}
-                  >
-                    <span className="relative py-2">
-                      {item.label}
-                      <span className={`absolute bottom-0 left-0 h-0.5 bg-yellow-400 transition-all duration-300 ${
-                        pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
-                      }`} />
-                    </span>
-                  </Link>
-                ))}
-              </div>
+            {/* Navigation Links (Desktop only) */}
+            <div className="hidden lg:flex items-center gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative group text-white font-medium transition-colors hover:text-yellow-400 ${
+                    pathname === item.href ? "text-yellow-400" : ""
+                  }`}
+                >
+                  <span className="relative py-2">
+                    {item.label}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-yellow-400 transition-all duration-300 ${
+                      pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
+                    }`} />
+                  </span>
+                </Link>
+              ))}
             </div>
 
-            {/* Right Actions */}
-            <div className="flex items-center gap-6">
-              {/* WhatsApp Icon */}
+            {/* Right Actions (Icon + Menu for mobile, Full buttons for desktop) */}
+            <div className="flex items-center gap-2 sm:gap-4">
+              {/* WhatsApp Icon (visible on all sizes) */}
               <Link
                 href="https://wa.me/254700064857"
                 target="_blank"
-                className="text-yellow-400 hover:text-yellow-500 transition-colors"
+                className="text-yellow-400 hover:text-yellow-500 transition-colors p-2"
                 title="Chat on WhatsApp"
               >
                 <MessageCircle className="w-5 h-5" />
               </Link>
 
-              {/* Login/Signup */}
+              {/* Login/Signup (Desktop only) */}
               <div className="hidden md:flex items-center gap-4">
                 <Link href="#" className="text-white hover:text-yellow-400 transition-colors text-sm font-medium">
                   <LogIn className="w-4 h-4 inline mr-1" />
@@ -205,11 +193,20 @@ export function Navbar() {
                 </Link>
               </div>
 
-              {/* Book Now Button */}
+              {/* Book Now Button (Desktop only) */}
               <Link href="/packages" className="hidden md:inline-flex items-center gap-2 bg-yellow-400 hover:bg-orange-500 text-neutral-900 font-bold rounded-full px-6 py-2 text-sm transition-all duration-300 hover:scale-105 shadow-lg">
                 Book Now
                 <ChevronRight className="w-4 h-4 ml-1" />
               </Link>
+
+              {/* Mobile Menu Button (FAR RIGHT) */}
+              <button
+                onClick={() => setIsOpen(true)}
+                className="lg:hidden text-white p-2 hover:text-yellow-400 transition-colors"
+                aria-label="Open menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
             </div>
           </div>
         </div>

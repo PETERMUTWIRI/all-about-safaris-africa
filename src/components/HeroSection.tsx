@@ -61,15 +61,15 @@ export function HeroSection() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="https://wa.me/254700064857" target="_blank">
+            <Link href="/packages">
               <Button className="bg-yellow-400 hover:bg-orange-500 text-neutral-900 font-bold px-10 py-6 rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-2xl shadow-yellow-400/40">
                 Start Your Safari
                 <ArrowRight className="w-6 h-6 ml-2" />
               </Button>
             </Link>
-            <Link href="/packages">
+            <Link href="https://wa.me/254700064857" target="_blank">
               <Button className="border-2 border-white text-white hover:bg-white hover:text-neutral-900 font-bold px-10 py-6 rounded-full text-lg transition-all duration-300">
-                View Packages
+                Chat on WhatsApp
               </Button>
             </Link>
           </div>
