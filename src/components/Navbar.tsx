@@ -133,7 +133,7 @@ export function Navbar() {
         <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
             {/* Mobile Logo + Site Name (FAR LEFT) */}
-            <Link href="/" className="lg:hidden flex items-center gap-1.5 group flex-shrink-0">
+            <Link href="/" className="lg:hidden flex items-center gap-2 group flex-shrink-0">
               <div className="w-8 h-8 rounded-full border-2 border-yellow-400/50 overflow-hidden group-hover:border-yellow-400 transition-all duration-300">
                 <Image
                   src="/images/safaris-logo.jpeg"
@@ -143,9 +143,9 @@ export function Navbar() {
                   className="object-cover"
                 />
               </div>
-              <div className="hidden xs:block">
+              <div className="block">
                 <p className="text-white font-bold text-xs leading-tight">All About</p>
-                <p className="text-yellow-400 font-bold text-xs">Safaris</p>
+                <p className="text-yellow-400 font-bold text-xs">Safaris Africa</p>
               </div>
             </Link>
 

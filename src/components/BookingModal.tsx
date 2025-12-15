@@ -6,6 +6,15 @@ import { X, Send, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+
+// Format date to readable string (YYYY-MM-DD to readable format)
+const formatDateForWhatsApp = (dateString: string) => {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+};
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -24,8 +33,9 @@ export function BookingModal({
 }: BookingModalProps) {
   const [formData, setFormData] = useState({
     name: '',
-    dates: '',
-    contact: '',
+    startDate: '',
+    endDate: '',
+    phone: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -38,17 +48,28 @@ export function BookingModal({
     }));
   };
 
+  const handlePhoneChange = (value: string | undefined) => {
+    setFormData(prev => ({
+      ...prev,
+      phone: value || '',
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate required fields
-    if (!formData.name.trim() || !formData.dates.trim() || !formData.contact.trim()) {
+    if (!formData.name.trim() || !formData.startDate || !formData.endDate || !formData.phone.trim()) {
       alert('Please fill in all fields');
       return;
     }
 
+    // Format dates
+    const startDateFormatted = formatDateForWhatsApp(formData.startDate);
+    const endDateFormatted = formatDateForWhatsApp(formData.endDate);
+
     // Build WhatsApp message with form data
-    const message = `Booking Inquiry - ${packageTitle}\n\n${packageDetails}\n\nPlease reserve a spot for me on this package.\nTraveler name: ${formData.name}\nPreferred dates: ${formData.dates}\nContact phone/email: ${formData.contact}`;
+    const message = `Booking Inquiry - ${packageTitle}\n\n${packageDetails}\n\nPlease reserve a spot for me on this package.\nTraveler name: ${formData.name}\nPreferred dates: ${startDateFormatted} - ${endDateFormatted}\nContact phone: ${formData.phone}`;
 
     const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
@@ -61,7 +82,7 @@ export function BookingModal({
       setTimeout(() => {
         onClose();
         setSubmitted(false);
-        setFormData({ name: '', dates: '', contact: '' });
+        setFormData({ name: '', startDate: '', endDate: '', phone: '' });
       }, 500);
     }, 800);
   };
@@ -127,38 +148,55 @@ export function BookingModal({
                       />
                     </div>
 
-                    {/* Dates Input */}
+                    {/* Start Date Picker */}
                     <div className="space-y-2">
-                      <Label htmlFor="dates" className="text-white text-sm font-medium">
-                        Preferred Dates *
+                      <Label htmlFor="startDate" className="text-white text-sm font-medium">
+                        Start Date *
                       </Label>
                       <Input
-                        id="dates"
-                        name="dates"
-                        type="text"
-                        placeholder="e.g., Dec 20 - Dec 27, 2025"
-                        value={formData.dates}
+                        id="startDate"
+                        name="startDate"
+                        type="date"
+                        value={formData.startDate}
                         onChange={handleChange}
                         className="bg-neutral-800 border-neutral-700 text-white placeholder-neutral-500 focus:border-yellow-400"
                         required
                       />
                     </div>
 
-                    {/* Contact Input */}
+                    {/* End Date Picker */}
                     <div className="space-y-2">
-                      <Label htmlFor="contact" className="text-white text-sm font-medium">
-                        Contact (Phone/Email) *
+                      <Label htmlFor="endDate" className="text-white text-sm font-medium">
+                        End Date *
                       </Label>
                       <Input
-                        id="contact"
-                        name="contact"
-                        type="text"
-                        placeholder="+254... or email@example.com"
-                        value={formData.contact}
+                        id="endDate"
+                        name="endDate"
+                        type="date"
+                        value={formData.endDate}
                         onChange={handleChange}
                         className="bg-neutral-800 border-neutral-700 text-white placeholder-neutral-500 focus:border-yellow-400"
                         required
                       />
+                    </div>
+
+                    {/* Phone Input with Country Code Picker */}
+                    <div className="space-y-2">
+                      <Label className="text-white text-sm font-medium flex items-center gap-2">
+                        <Phone className="w-4 h-4" />
+                        Phone Number *
+                      </Label>
+                      <div className="[&_.PhoneInputInput]:bg-neutral-800 [&_.PhoneInputInput]:border-neutral-700 [&_.PhoneInputInput]:text-white [&_.PhoneInputInput]:placeholder-neutral-500 [&_.PhoneInputInput]:focus:border-yellow-400 [&_.PhoneInputCountrySelect]:bg-neutral-800 [&_.PhoneInputCountrySelect]:border-neutral-700 [&_.PhoneInputCountrySelect]:text-white [&_select]:bg-neutral-800">
+                        <PhoneInput
+                          international
+                          countryCallingCodeEditable={false}
+                          defaultCountry="KE"
+                          value={formData.phone}
+                          onChange={handlePhoneChange}
+                          placeholder="Enter phone number"
+                          className="PhoneInput"
+                        />
+                      </div>
                     </div>
 
                     {/* Submit Button */}
