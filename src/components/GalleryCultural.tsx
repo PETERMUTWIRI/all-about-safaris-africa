@@ -8,6 +8,7 @@ import { GalleryLightbox } from './GalleryLightbox';
 
 const playfair = Playfair_Display({ subsets: ['latin'] });
 
+// ✅ ORIGINAL IMAGE URLs PRESERVED
 const culturalImages = [
   { id: 10, src: '/images/masai-cultural.jpg', title: 'Masai Warrior Dance', category: 'Culture', description: 'Traditional ceremony performance' },
   { id: 11, src: '/images/historic-tours.jpg', title: 'Swahili Architecture', category: 'Culture', description: 'Lamu Old Town UNESCO heritage' },
@@ -20,7 +21,6 @@ export function GalleryCultural() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const ref = useRef(null);
 
-  // Parallax effect using useScroll
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
@@ -29,7 +29,7 @@ export function GalleryCultural() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
-    <section ref={ref} className="relative py-32 bg-neutral-900 overflow-hidden">
+    <section ref={ref} className="relative py-24 md:py-32 bg-neutral-950 overflow-hidden">
       {/* Parallax Background */}
       <motion.div
         style={{ y }}
@@ -50,18 +50,18 @@ export function GalleryCultural() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-center mb-20"
+          className="text-center mb-16 md:mb-20"
         >
-          <h5 className="text-yellow-400 text-sm uppercase tracking-[0.3em] mb-4">
+          <h5 className="text-yellow-400 text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] mb-3 md:mb-4">
             Living Heritage
           </h5>
-          <h2 className={`${playfair.className} text-5xl lg:text-6xl font-bold text-white`}>
+          <h2 className={`${playfair.className} text-3xl md:text-5xl lg:text-6xl font-bold text-white`}>
             Cultural
             <span className="block text-yellow-400">Immersion</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {culturalImages.map((image, index) => (
             <div key={image.id} className="relative h-80 rounded-2xl overflow-hidden group cursor-pointer"
               onClick={() => {

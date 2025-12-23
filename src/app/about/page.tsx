@@ -9,10 +9,10 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="min-h-screen bg-neutral-900"> {/* ✅ DARK BACKGROUND FIX */}
       <AboutContent />
-      
+      <Newsletter />
       <BackToTop />
-    </>
+    </div>
   );
 }

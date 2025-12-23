@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Playfair_Display } from 'next/font/google';
-import { Send } from 'lucide-react';
+import { Send, CheckCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const playfair = Playfair_Display({ subsets: ['latin'] });
@@ -23,13 +23,35 @@ export function ContactForm() {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const whatsappNumber = '254700064857'; // ✅ Your WhatsApp number
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would integrate with your backend
-    console.log('Contact form submitted:', formData);
+    
+    // ✅ Format message for WhatsApp
+    const whatsappMessage = `
+*NEW CONTACT INQUIRY*
+
+👤 *From:* ${formData.name}
+📧 *Email:* ${formData.email}
+📋 *Subject:* ${formData.subject}
+
+💬 *Message:*
+${formData.message}
+
+⏰ *Time:* ${new Date().toLocaleString()}
+    `.trim();
+
+    // ✅ Open WhatsApp
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+
+    // ✅ Show success feedback
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 5000);
+
+    // ✅ Reset form
+    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -49,12 +71,12 @@ export function ContactForm() {
       <h3 className={`${playfair.className} text-2xl font-bold text-white mb-2`}>
         Contact Us
       </h3>
-      <p className="text-neutral-400 mb-4">
-        Please fill out the form below to get in touch with us.
+      <p className="text-neutral-400 mb-6">
+        Send us a message via WhatsApp and we'll respond within minutes.
       </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="form-group">
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div>
           <label htmlFor="name" className="block text-neutral-300 mb-2 font-medium">
             Your Name
           </label>
@@ -64,13 +86,13 @@ export function ContactForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-[var(--savanna-gold)] focus:ring-2 focus:ring-[var(--savanna-gold)]/20 transition-all"
+            className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-600 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all"
             placeholder="Enter your name"
             required
           />
         </div>
 
-        <div className="form-group">
+        <div>
           <label htmlFor="email" className="block text-neutral-300 mb-2 font-medium">
             Your Email
           </label>
@@ -80,13 +102,13 @@ export function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-[var(--savanna-gold)] focus:ring-2 focus:ring-[var(--savanna-gold)]/20 transition-all"
+            className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-600 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all"
             placeholder="Enter your email"
             required
           />
         </div>
 
-        <div className="form-group">
+        <div>
           <label htmlFor="subject" className="block text-neutral-300 mb-2 font-medium">
             Subject
           </label>
@@ -96,13 +118,13 @@ export function ContactForm() {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-[var(--savanna-gold)] focus:ring-2 focus:ring-[var(--savanna-gold)]/20 transition-all"
+            className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-600 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all"
             placeholder="Enter the subject"
             required
           />
         </div>
 
-        <div className="form-group">
+        <div>
           <label htmlFor="message" className="block text-neutral-300 mb-2 font-medium">
             Message
           </label>
@@ -112,7 +134,7 @@ export function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             rows={5}
-            className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:border-[var(--savanna-gold)] focus:ring-2 focus:ring-[var(--savanna-gold)]/20 transition-all resize-none"
+            className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-600 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 transition-all resize-none"
             placeholder="Your message here..."
             required
           />
@@ -122,10 +144,10 @@ export function ContactForm() {
           type="submit"
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full bg-[var(--acacia-green)] hover:bg-[var(--earth-ochre)] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+          className="w-full bg-green-800 hover:bg-orange-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
         >
           <Send className="w-5 h-5" />
-          Send Message
+          Send via WhatsApp
         </motion.button>
 
         {isSubmitted && (
@@ -134,7 +156,7 @@ export function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-center"
           >
-            Message sent successfully! We'll get back to you soon.
+            ✓ Message sent via WhatsApp! We'll respond within minutes.
           </motion.div>
         )}
       </form>

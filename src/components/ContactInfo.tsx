@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -11,12 +13,12 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Mobile",
-    details: ["+254-700-064-857", "+254-700-064-857"]
+    details: ["+254-700-064-857"]
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["allaboutsafarisafrica@gmail.com", "allaboutsafarisafrica@gmail.com"]
+    details: ["allaboutsafarisafrica@gmail.com"]
   }
 ];
 
@@ -28,7 +30,7 @@ export function ContactInfo() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="h-full"
     >
-      <div className="bg-white rounded-2xl p-6 h-full">
+      <div className="bg-neutral-800 rounded-2xl p-6 h-full border border-neutral-700">
         {contactInfo.map((info, index) => (
           <motion.div
             key={info.title}
@@ -37,15 +39,15 @@ export function ContactInfo() {
             transition={{ delay: index * 0.2 }}
             className={cn(
               "text-center py-6",
-              index !== contactInfo.length - 1 && "border-b border-neutral-200"
+              index !== contactInfo.length - 1 && "border-b border-neutral-700"
             )}
           >
-            <info.icon className="w-12 h-12 text-[var(--savanna-gold)] mx-auto mb-3" />
-            <h4 className="text-[var(--acacia-green)] font-bold text-lg mb-2">
+            <info.icon className="w-12 h-12 text-yellow-400 mx-auto mb-3" />
+            <h4 className="text-white font-bold text-lg mb-2">
               {info.title}
             </h4>
             {info.details.map((detail, i) => (
-              <p key={i} className="text-neutral-600 font-medium">
+              <p key={i} className="text-neutral-400 font-medium">
                 {detail}
               </p>
             ))}

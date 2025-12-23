@@ -1,10 +1,15 @@
 import { ContactContent } from '@/components/ContactContent';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Contact Us | All About Safaris Africa',
-  description: 'Get in touch with All About Safaris Africa. Plan your dream safari adventure today.',
+  description: 'Get in touch to plan your dream safari adventure in Kenya and beyond.',
 };
 
 export default function ContactPage() {
-  return <ContactContent />;
+  return (
+    <main className="min-h-screen bg-neutral-900"> {/* ✅ DARK BACKGROUND FIX */}
+      <ContactContent />
+    </main>
+  );
 }

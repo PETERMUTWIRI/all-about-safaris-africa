@@ -205,7 +205,7 @@ export function Footer() {
             className="text-center mt-6 pt-4 border-t border-neutral-700/30"
           >
             <p className="text-neutral-500 text-xs">
-              2009-2024 All About Safaris Africa. All rights reserved. | 
+              2009-2025 All About Safaris Africa. All rights reserved. | 
               Designed with passion by 
               <a href="https://mutsynchub.com " className="text-yellow-400 hover:text-white transition-colors ml-1">
                 Mutsynchub

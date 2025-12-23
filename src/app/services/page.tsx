@@ -1,4 +1,5 @@
 import { ServicesContent } from '@/components/ServicesContent';
+import { Newsletter } from '@/components/Newsletter';
 
 export const metadata = {
   title: 'Our Services | All About Safaris Africa',
@@ -6,5 +7,11 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
-  return <ServicesContent />; {/* ✅ No wrapper, no spacing */}
+  return (
+    // ✅ DARK BACKGROUND WRAPPER - ensures consistency behind navbar
+    <div className="min-h-screen bg-neutral-950">
+      <ServicesContent />
+      <Newsletter />
+    </div>
+  );
 }

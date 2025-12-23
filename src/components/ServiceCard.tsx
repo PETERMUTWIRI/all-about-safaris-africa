@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 import { Playfair_Display } from 'next/font/google';
 import { cn } from '@/lib/utils';
+
 const playfair = Playfair_Display({ subsets: ['latin'] });
 
 interface ServiceCardProps {
@@ -51,23 +52,23 @@ export function ServiceCard({ title, description, Icon, variant = 'right', index
           background: "linear-gradient(135deg, var(--savanna-gold), var(--earth-ochre), var(--acacia-green))"
         }}
       />
-      <div className="relative z-10 flex items-center gap-6">
+      <div className="relative z-10 flex items-center gap-4 md:gap-6 flex-col md:flex-row">
         {variant === 'left' ? (
           <>
-            <div className="flex-1 space-y-4">
+            <div className="flex-1 space-y-3 md:space-y-4">
               <motion.h5
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 * index }}
-                className={`${playfair.className} text-2xl font-bold text-white group-hover:text-[var(--savanna-gold)] transition-colors`}
+                transition={{ delay: index * 0.2 }}
+                className={`${playfair.className} text-lg md:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors`}
               >
                 {title}
               </motion.h5>
               <motion.p
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 * index }}
-                className="text-neutral-400 leading-relaxed"
+                transition={{ delay: index * 0.3 }}
+                className="text-neutral-400 text-sm md:text-base leading-relaxed"
               >
                 {description}
               </motion.p>
@@ -75,10 +76,10 @@ export function ServiceCard({ title, description, Icon, variant = 'right', index
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.1 * index, type: "spring", stiffness: 200 }}
-              className="flex-shrink-0 w-20 h-20 bg-[var(--savanna-gold)]/10 rounded-full flex items-center justify-center group-hover:bg-[var(--savanna-gold)] transition-colors"
+              transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
+              className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 bg-yellow-400/10 rounded-full flex items-center justify-center group-hover:bg-yellow-400 transition-colors"
             >
-              <Icon className="w-10 h-10 text-[var(--savanna-gold)] group-hover:text-neutral-900 transition-colors" />
+              <Icon className="w-6 h-6 md:w-10 md:h-10 text-yellow-400 group-hover:text-neutral-900 transition-colors" />
             </motion.div>
           </>
         ) : (
@@ -86,25 +87,25 @@ export function ServiceCard({ title, description, Icon, variant = 'right', index
             <motion.div
               initial={{ scale: 0, rotate: 180 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 0.1 * index, type: "spring", stiffness: 200 }}
-              className="flex-shrink-0 w-20 h-20 bg-[var(--savanna-gold)]/10 rounded-full flex items-center justify-center group-hover:bg-[var(--savanna-gold)] transition-colors"
+              transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
+              className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 bg-yellow-400/10 rounded-full flex items-center justify-center group-hover:bg-yellow-400 transition-colors"
             >
-              <Icon className="w-10 h-10 text-[var(--savanna-gold)] group-hover:text-neutral-900 transition-colors" />
+              <Icon className="w-6 h-6 md:w-10 md:h-10 text-yellow-400 group-hover:text-neutral-900 transition-colors" />
             </motion.div>
-            <div className="flex-1 space-y-4">
+            <div className="flex-1 space-y-3 md:space-y-4">
               <motion.h5
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 * index }}
-                className={`${playfair.className} text-2xl font-bold text-white group-hover:text-[var(--savanna-gold)] transition-colors`}
+                transition={{ delay: index * 0.2 }}
+                className={`${playfair.className} text-lg md:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors`}
               >
                 {title}
               </motion.h5>
               <motion.p
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 * index }}
-                className="text-neutral-400 leading-relaxed"
+                transition={{ delay: index * 0.3 }}
+                className="text-neutral-400 text-sm md:text-base leading-relaxed"
               >
                 {description}
               </motion.p>

@@ -111,7 +111,10 @@ const blogPosts: BlogPost[] = [
 ];
 
 export default function BlogPage() {
-  // This is a server component (exports `metadata`) — delegate client behavior
-  // (stateful modal/interaction) to the `BlogClient` client component.
-  return <BlogClient posts={blogPosts} />;
+  return (
+    // ✅ DARK BACKGROUND WRAPPER - ensures consistency behind navbar
+    <div className="min-h-screen bg-neutral-950">
+      <BlogClient posts={blogPosts} />
+    </div>
+  );
 }

@@ -8,7 +8,7 @@ import { ChevronDown } from 'lucide-react';
 
 const playfair = Playfair_Display({ subsets: ['latin'] });
 
-// Using your existing hero and landscape images
+// ✅ ORIGINAL IMAGE URLs PRESERVED
 const heroImages = [
   { src: '/images/hero-masai-mara-sunset.jpg', title: 'Golden Hour in Masai Mara', category: 'Wildlife' },
   { src: '/images/about-hero-savanna.jpg', title: 'African Savannah Vista', category: 'Landscape' },
@@ -28,7 +28,7 @@ export function GalleryHeroCarousel() {
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-[70vh] md:h-screen overflow-hidden bg-neutral-950">
       {/* Shuffling Background Layer */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -58,14 +58,14 @@ export function GalleryHeroCarousel() {
           transition={{ duration: 1, delay: 0.5 }}
           className="max-w-6xl mx-auto"
         >
-          <h5 className="text-yellow-400 text-sm uppercase tracking-[0.3em] mb-6">
+          <h5 className="text-yellow-400 text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] mb-4 md:mb-6">
             {heroImages[currentIndex].category}
           </h5>
-          <h1 className={`${playfair.className} text-7xl lg:text-9xl font-bold text-white leading-tight mb-8`}>
+          <h1 className={`${playfair.className} text-4xl md:text-7xl lg:text-9xl font-bold text-white leading-tight mb-4 md:mb-8`}>
             Moments That
             <span className="block text-yellow-400">Define Africa</span>
           </h1>
-          <p className="text-xl lg:text-2xl text-white/90 mb-12 max-w-4xl mx-auto">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-12 max-w-4xl mx-auto">
             {heroImages[currentIndex].title}
           </p>
         </motion.div>
@@ -74,14 +74,14 @@ export function GalleryHeroCarousel() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-10"
+          className="absolute bottom-6 md:bottom-10"
         >
-          <ChevronDown className="w-12 h-12 text-yellow-400 animate-bounce" />
+          <ChevronDown className="w-8 h-8 md:w-12 md:h-12 text-yellow-400 animate-bounce" />
         </motion.div>
       </div>
 
       {/* Image Counter */}
-      <div className="absolute top-6 right-6 bg-neutral-800/80 backdrop-blur-md border border-neutral-700 px-4 py-2 rounded-full text-sm text-neutral-300">
+      <div className="absolute top-4 md:top-6 right-4 md:right-6 bg-neutral-800/80 backdrop-blur-md border border-neutral-700 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm text-neutral-300">
         {currentIndex + 1} / {heroImages.length}
       </div>
     </section>

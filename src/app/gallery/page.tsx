@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function GalleryPage() {
   return (
-    <>
+    <div className="min-h-screen bg-neutral-900"> {/* ✅ DARK BACKGROUND FIX */}
       <GalleryHeroCarousel />
       <GalleryFeatured />
       <GalleryWildlife />
@@ -23,6 +23,6 @@ export default function GalleryPage() {
       <GalleryFilterGrid />
       <Newsletter />
       <BackToTop />
-    </>
+    </div>
   );
 }
