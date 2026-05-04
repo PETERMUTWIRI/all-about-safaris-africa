@@ -11,28 +11,68 @@ const playfair = Playfair_Display({ subsets: ['latin'] });
 
 const packages = [
   {
-    title: "Masai Mara Migration",
-    duration: "7 Days",
-    price: "$4,200",
-    image: "/images/preview-mara.jpg",
+    title: "Nairobi National Park",
+    duration: "3 Days",
+    price: "$599",
+    image: "/images/Packages-n.jpg",
+    highlights: ["Wildlife Sanctuaries", "Cultural Sites", "City Safari"],
+    locations: "Nairobi City"
+  },
+  {
+    title: "Masai Mara National Reserve",
+    duration: "12 Days",
+    price: "$2,899",
+    image: "/images/packages-1.jpg",
     highlights: ["Big Five", "Great Migration", "Luxury Lodges"],
-    locations: "Kenya, Tanzania"
+    locations: "Kenya"
   },
   {
-    title: "Gorilla & Chimp Trek",
-    duration: "10 Days",
-    price: "$6,800",
-    image: "/images/gorilla-trek.jpg",
-    highlights: ["Gorillas", "Chimps", "Rainforest"],
-    locations: "Uganda, Rwanda"
+    title: "Amboseli National Park",
+    duration: "5 Days",
+    price: "$1,099",
+    image: "/images/amboseli.jpg",
+    highlights: ["Elephants", "Kilimanjaro Views", "Volcanic Landscapes"],
+    locations: "Kenya"
   },
   {
-    title: "Southern Africa Explorer",
-    duration: "14 Days",
-    price: "$8,500",
-    image: "/images/preview-southern.jpg",
-    highlights: ["Victoria Falls", "Okavango", "Desert"],
-    locations: "Zambia, Botswana, Namibia"
+    title: "Tsavo East National Park",
+    duration: "5 Days",
+    price: "$1,099",
+    image: "/images/packages-3.jpg",
+    highlights: ["Red Elephants", "Aruba Dam", "Theatre of the Wild"],
+    locations: "Kenya"
+  },
+  {
+    title: "Samburu National Reserve",
+    duration: "12 Days",
+    price: "$2,899",
+    image: "/images/packages-1.jpg",
+    highlights: ["Grevy's Zebra", "Reticulated Giraffe", "Samburu Culture"],
+    locations: "Kenya"
+  },
+  {
+    title: "Lake Nakuru National Park",
+    duration: "2 Days",
+    price: "$399",
+    image: "/images/packages-2.jpeg",
+    highlights: ["Flamingos", "Rhinos", "Rift Valley"],
+    locations: "Kenya"
+  },
+  {
+    title: "Lake Naivasha",
+    duration: "8 Days",
+    price: "$1,699",
+    image: "/images/rift-valley.jpg",
+    highlights: ["Boat Rides", "Hippos", "Crescent Island"],
+    locations: "Kenya"
+  },
+  {
+    title: "Mount Kenya National Park",
+    duration: "7 Days",
+    price: "$2,599",
+    image: "/images/mount-kenya.jpg",
+    highlights: ["Point Lenana", "Alpine Lakes", "High-Altitude Trek"],
+    locations: "Kenya"
   }
 ];
 
@@ -55,7 +95,7 @@ export function PackagesPreview() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {packages.map((pkg, index) => (
             <motion.div
               key={pkg.title}
